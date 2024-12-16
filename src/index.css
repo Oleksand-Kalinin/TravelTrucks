@@ -1,5 +1,18 @@
 @import 'node_modules/modern-normalize/modern-normalize.css';
 
+:root {
+  --color-charcoal: #101828;
+  --color-steel: #475467;
+  --color-slate: #6c717b;
+  --color-crimson: #e44848;
+  --color-carmine: #d84343;
+  --color-amber: #ffc531;
+  --color-silver: #dadde1;
+  --color-light-gray: #f2f4f7;
+  --color-gray: #f7f7f7;
+  --color-white: #ffffff;
+}
+
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
