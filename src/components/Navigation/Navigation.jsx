@@ -2,6 +2,7 @@ import clsx from "clsx";
 import css from "./Navigation.module.css";
 import { NavLink } from "react-router-dom";
 import Container from "../Container/Container.jsx";
+import Logo from "../Logo/Logo.jsx";
 
 const Navigation = () => {
   const buildLinkClass = ({ isActive }) => {
@@ -11,7 +12,7 @@ const Navigation = () => {
   return (
     <Container className={css.container}>
       <nav className={css.navigation}>
-        <p>Logo</p>
+        <Logo className={css.logo} />
         <ul className={css.navigationList}>
           <li className={css.navigationListItem}>
             <NavLink to="/" className={buildLinkClass}>

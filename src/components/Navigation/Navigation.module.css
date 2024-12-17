@@ -1,9 +1,17 @@
 .container {
     background-color: var(--color-gray);
+    position: relative;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .navigationList {
     display: flex;
+    justify-content: center;
     column-gap: 32px;
 
     font-weight: 500;
