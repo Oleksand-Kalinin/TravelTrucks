@@ -7,6 +7,7 @@ const HomePage = lazy(() => import("./pages/HomePage.jsx"));
 const TrucksPage = lazy(() => import("./pages/TrucksPage.jsx"));
 const TruckDetailsPage = lazy(() => import("./pages/TruckDetailsPage.jsx"));
 
+import "./App.css";
 const App = () => {
   return (
     <Layout>
