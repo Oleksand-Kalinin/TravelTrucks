@@ -1,0 +1,67 @@
+.section.sectionHero {
+    padding-top: 0;
+    max-width: 1440px;
+
+    margin-left: auto;
+    margin-right: auto;
+
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.2),
+            rgba(0, 0, 0, 0.2)),
+        url("../../images/hero/bg-desktop.jpg");
+}
+
+.container {
+    padding: 260px 64px;
+}
+
+.titleHero {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 0.67;
+    color: var(--color-gray);
+
+    margin-bottom: 16px;
+}
+
+.textHero {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33;
+    color: var(--color-gray);
+
+    margin-bottom: 40px;
+}
+
+.btnViewNow {
+    display: inline-block;
+
+    border-radius: 200px;
+    padding: 16px 60px;
+    min-width: 173px;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--color-white);
+
+    background-color: var(--color-crimson);
+    transition: background-color 250ms linear;
+}
+
+.btnViewNow:hover,
+.btnViewNow:focus {
+    background-color: var(--color-carmine);
+}
+
+@media only screen and (min-resolution: 192dpi) {
+
+    .section.sectionHero {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.2),
+                rgba(0, 0, 0, 0.2)),
+            url("../../images/hero/bg-desktop@2x.jpg");
+    }
+
+}
