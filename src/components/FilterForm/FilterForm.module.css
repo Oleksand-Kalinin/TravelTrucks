@@ -1,0 +1,127 @@
+.form {
+    max-width: 360px;
+}
+
+.labelLocation {
+    display: block;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-slate);
+    margin-bottom: 8px;
+}
+
+.wrapperLocation {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.iconLocation {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+}
+
+.inputLocation {
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 48px;
+    background-color: var(--color-gray);
+}
+
+.inputLocation:placeholder-shown+.iconLocation {
+    fill: var(--color-slate);
+}
+
+.inputLocation:focus {
+    outline-color: var(--color-slate);
+}
+
+.inputLocation::placeholder {
+    color: var(--color-slate);
+}
+
+.textFilters {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-steel);
+    margin-bottom: 32px;
+}
+
+.fieldset {
+    margin-bottom: 32px;
+}
+
+.lastFieldset {
+    margin-bottom: 40px;
+}
+
+.legend {
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--color-charcoal);
+    margin-bottom: 24px;
+}
+
+.labelCheckbox,
+.labelRadio {
+    border: 1px solid var(--color-silver);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    row-gap: 8px;
+}
+
+.labelCheckbox {
+    border-radius: 12px;
+    padding: 16px 18px;
+}
+
+.labelRadio {
+    border-radius: 10px;
+    padding: 16px 32px;
+}
+
+.acceptPadding {
+    padding: 4px 16px;
+}
+
+.checkboxWrapper,
+.radioWrapper {
+    padding-top: 24px;
+    border-top: 1px solid var(--color-silver);
+
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 12px;
+    row-gap: 8px;
+}
+
+.btn {
+    border-radius: 200px;
+    padding: 16px 60px;
+    min-width: 166px;
+    background-color: var(--color-crimson);
+    border: none;
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--color-white);
+    transition: background-color 250ms linear;
+}
+
+.btn:hover,
+.btn:focus {
+    background-color: var(--color-carmine);
+}

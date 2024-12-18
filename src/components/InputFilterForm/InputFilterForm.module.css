@@ -1,0 +1,25 @@
+.wrapper {
+    width: 112px;
+}
+
+.input:focus+.label {
+    border-color: var(--color-slate);
+}
+
+.input:checked+.label {
+    border-color: var(--color-crimson);
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.text {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--color-charcoal);
+    text-align: center;
+}
