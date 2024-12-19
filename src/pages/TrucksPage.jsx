@@ -1,7 +1,7 @@
 import TrucksSection from "../components/TrucksSection/TrucksSection.jsx";
 
 const TrucksPage = () => {
-  return <TrucksSection></TrucksSection>;
+  return <TrucksSection />;
 };
 
 export default TrucksPage;

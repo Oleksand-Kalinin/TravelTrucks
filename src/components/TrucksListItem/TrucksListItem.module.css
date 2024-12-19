@@ -1,0 +1,108 @@
+.trucksListItem {
+    border: 1px solid var(--color-silver);
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 888px;
+
+    display: flex;
+    column-gap: 24px;
+}
+
+.image {
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.truckWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 524px;
+}
+
+.truckTitleWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33;
+    color: var(--color-charcoal);
+    margin-bottom: 8px;
+}
+
+.truckPriceWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+}
+
+.heartIcon {
+    width: 26px;
+    height: 24px;
+}
+
+.truckRatingLocation {
+    display: flex;
+    column-gap: 16px;
+
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-charcoal);
+
+    margin-bottom: 24px;
+}
+
+.starIcon,
+.mapIcon {
+    width: 16px;
+    height: 16px;
+}
+
+.truckRating,
+.truckLocation {
+    display: flex;
+    column-gap: 4px;
+
+    align-items: center;
+}
+
+.truckDescription {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-steel);
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    margin-bottom: 24px;
+}
+
+.truckFeaturesWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.btnShowMore {
+    border-radius: 200px;
+    padding: 16px 40px;
+    max-width: 166px;
+    background-color: var(--color-crimson);
+
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    color: var(--color-white);
+
+    transition: background-color 250ms linear;
+}
+
+.btnShowMore:hover,
+.btnShowMore:focus {
+    background-color: var(--color-carmine);
+}

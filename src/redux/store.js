@@ -1,4 +1,4 @@
-import { trucksReducer } from "./auth/slice.js";
+import { trucksReducer } from "./trucks/slice.js";
 import { configureStore } from "@reduxjs/toolkit";
 
 export const store = configureStore({
