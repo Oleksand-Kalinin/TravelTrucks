@@ -1,3 +1,7 @@
+.section {
+    padding-bottom: 52px;
+}
+
 .container {
     display: flex;
     column-gap: 64px;

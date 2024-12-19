@@ -7,7 +7,7 @@ import css from "./TrucksSection.module.css";
 
 const TrucksSection = () => {
   return (
-    <Section>
+    <Section className={css.section}>
       <Container className={css.container}>
         <FilterForm />
         <TrucksCatalog />

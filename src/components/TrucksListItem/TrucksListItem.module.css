@@ -21,6 +21,10 @@
     max-width: 524px;
 }
 
+.truckInfo {
+    margin-bottom: 24px;
+}
+
 .truckTitleWrapper {
     display: flex;
     justify-content: space-between;
@@ -89,7 +93,7 @@
 
 .btnShowMore {
     border-radius: 200px;
-    padding: 16px 40px;
+    padding: 14px 40px;
     max-width: 166px;
     background-color: var(--color-crimson);
 

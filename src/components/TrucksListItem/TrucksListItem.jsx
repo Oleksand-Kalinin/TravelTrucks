@@ -4,7 +4,6 @@ import css from "./TrucksListItem.module.css";
 import TruckFeaturesItem from "../TruckFeaturesItem/TruckFeaturesItem.jsx";
 
 const TrucksListItem = ({ truck }) => {
-  console.log(truck);
   return (
     <li className={css.trucksListItem}>
       <img

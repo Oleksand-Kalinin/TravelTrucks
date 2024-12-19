@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { fetchTrucks } from "./operations.js";
 
 export const INITIAL_STATE = {
     // trucks: null,
@@ -71,20 +72,23 @@ const trucksSlice = createSlice({
         },
     },
 
-    // extraReducers(builder) {
+    extraReducers(builder) {
 
-    //     builder
-    //         .addCase(api.pending, (state) => {
-    //             state.error = null;
-    //         })
-    //         .addCase(api.fulfilled, (state, action) => {
-    //             state.trucks = action.payload;
-    //         })
-    //         .addCase(api.rejected, (state, action) => {
-    //             state.error = action.payload;
-    //         })
+        builder
+            .addCase(fetchTrucks.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(fetchTrucks.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.trucks = action.payload;
+            })
+            .addCase(fetchTrucks.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
 
-    // },
+    },
 });
 
 export const { resetError } = trucksSlice.actions;
