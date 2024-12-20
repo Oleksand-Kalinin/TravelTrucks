@@ -28,8 +28,8 @@ const trucksSlice = createSlice({
             })
             .addCase(fetchTrucks.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.trucks = { ...state.trucks, ...action.payload.dataInfo };
-                state.trucks.items = [...state.trucks.items, ...action.payload.items];
+                state.trucks = action.payload;
+
             })
             .addCase(fetchTrucks.rejected, (state, action) => {
                 state.isLoading = false;
