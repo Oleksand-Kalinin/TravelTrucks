@@ -19,7 +19,6 @@ const TruckReviews = () => {
     return stars;
   };
 
-  console.log(truck.reviews);
   return (
     <div className={css.reviewsWrapper}>
       {truck.reviews.length > 0 &&

@@ -10,6 +10,7 @@ import clsx from "clsx";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTruckById } from "../../redux/trucks/selectors.js";
 import { fetchTruckById } from "../../redux/trucks/operations.js";
+import BookingForm from "../BookingForm/BookingForm.jsx";
 
 const TruckItem = () => {
   const dispatch = useDispatch();
@@ -75,7 +76,7 @@ const TruckItem = () => {
 
             <div className={css.truckTabsContent}>
               <Outlet truck={truck} />
-              <p>BookingForm</p>
+              <BookingForm />
             </div>
           </>
         )}

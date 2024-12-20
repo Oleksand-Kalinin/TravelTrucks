@@ -23,6 +23,10 @@
     height: 16px;
 }
 
+.starIcon {
+    fill: var(--color-amber);
+}
+
 .truckRating,
 .truckLocation {
     display: flex;
