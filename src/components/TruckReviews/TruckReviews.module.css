@@ -50,6 +50,10 @@
     fill: var(--color-light-gray);
 }
 
+.acceptFill {
+    fill: var(--color-amber);
+}
+
 .comment {
     font-size: 16px;
     line-height: 1.5;
