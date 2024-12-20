@@ -5,6 +5,7 @@ export const INITIAL_STATE = {
     trucks: {
         items: [],
     },
+    trucksFavorite: [],
     truckById: null,
     error: null,
     isLoading: false,
@@ -17,6 +18,19 @@ const trucksSlice = createSlice({
         resetError(state) {
             state.error = null;
         },
+
+        addFavoriteTruck(state, { payload }) {
+            const truckId = Number(payload);
+            state.trucksFavorite.push(truckId);
+        },
+
+        removeFavoriteTruck(state, { payload }) {
+            const truckId = Number(payload);
+            state.trucksFavorite = state.trucksFavorite.filter(
+                (truck) => truck !== truckId
+            );
+        },
+
     },
 
     extraReducers(builder) {
@@ -55,7 +69,7 @@ const trucksSlice = createSlice({
             })
             .addCase(fetchTrucksNextPage.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.trucks.items = [...state.trucks.items, ...action.payload];
+                state.trucks.items.push(...action.payload);
             })
             .addCase(fetchTrucksNextPage.rejected, (state, action) => {
                 state.isLoading = false;
@@ -65,5 +79,10 @@ const trucksSlice = createSlice({
     },
 });
 
-export const { resetError } = trucksSlice.actions;
+export const {
+    resetError,
+    addFavoriteTruck,
+    removeFavoriteTruck
+} = trucksSlice.actions;
+
 export const trucksReducer = trucksSlice.reducer;

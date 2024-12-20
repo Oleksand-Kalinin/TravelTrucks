@@ -2,8 +2,27 @@ import { Link } from "react-router-dom";
 import sprite from "../../images/sprite.svg";
 import css from "./TrucksListItem.module.css";
 import TruckFeaturesItem from "../TruckFeaturesItem/TruckFeaturesItem.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTrucksFavorite } from "../../redux/trucks/selectors.js";
+import {
+  addFavoriteTruck,
+  removeFavoriteTruck,
+} from "../../redux/trucks/slice.js";
+import clsx from "clsx";
 
 const TrucksListItem = ({ truck }) => {
+  const dispatch = useDispatch();
+  const trucksFavorite = useSelector(selectTrucksFavorite);
+  const isFavorite = trucksFavorite.includes(Number(truck.id));
+
+  const handleClickFavorite = () => {
+    if (isFavorite) {
+      dispatch(removeFavoriteTruck(truck.id));
+    } else {
+      dispatch(addFavoriteTruck(truck.id));
+    }
+  };
+
   return (
     <li className={css.trucksListItem}>
       <img
@@ -20,7 +39,12 @@ const TrucksListItem = ({ truck }) => {
 
             <div className={css.truckPriceWrapper}>
               <p className={css.truckPrice}>&#8364;{truck.price}.00</p>
-              <svg className={css.heartIcon}>
+              <svg
+                onClick={handleClickFavorite}
+                className={clsx(css.heartIcon, {
+                  [css.favorite]: isFavorite,
+                })}
+              >
                 <use href={`${sprite}#heart-icon`}></use>
               </svg>
             </div>

@@ -48,6 +48,10 @@
     height: 24px;
 }
 
+.favorite {
+    fill: #e44848;
+}
+
 .truckRatingLocation {
     display: flex;
     column-gap: 16px;
