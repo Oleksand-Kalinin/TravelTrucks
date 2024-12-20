@@ -2,6 +2,7 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import css from "./BookingForm.module.css";
 import clsx from "clsx";
+import { Bounce, toast } from "react-toastify";
 
 const BookingValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -28,6 +29,17 @@ const BookingForm = () => {
   };
 
   const handleSubmit = (values, actions) => {
+    toast.success(`Thank you, ${values.name}! Your booking is confirmed!`, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
     actions.resetForm();
   };
 
