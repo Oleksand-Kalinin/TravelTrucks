@@ -8,6 +8,7 @@ const TrucksPage = lazy(() => import("./pages/TrucksPage.jsx"));
 const TruckDetailsPage = lazy(() => import("./pages/TruckDetailsPage.jsx"));
 
 import "./App.css";
+import TruckFeatures from "./components/TruckFeatures/TruckFeatures.jsx";
 const App = () => {
   return (
     <Layout>
@@ -15,7 +16,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/catalog" element={<TrucksPage />} />
         <Route path="/catalog/:id" element={<TruckDetailsPage />}>
-          <Route path="features" element={"<TruckFeatures />"} />
+          <Route path="features" element={<TruckFeatures />} />
           <Route path="reviews" element={"<TruckReviews />"} />
         </Route>
         <Route path="*" element={<Navigate to={"/"} replace />} />

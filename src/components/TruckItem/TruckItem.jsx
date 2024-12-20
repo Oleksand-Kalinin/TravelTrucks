@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import { fetchTruckById } from "../../js/fetchTruckById.js";
 import Section from "../Section/Section.jsx";
 import Container from "../Container/Container.jsx";
 
@@ -8,24 +7,22 @@ import sprite from "../../images/sprite.svg";
 
 import css from "./TruckItem.module.css";
 import clsx from "clsx";
+import { useDispatch, useSelector } from "react-redux";
+import { selectTruckById } from "../../redux/trucks/selectors.js";
+import { fetchTruckById } from "../../redux/trucks/operations.js";
 
 const TruckItem = () => {
+  const dispatch = useDispatch();
   const { id } = useParams("id");
-  const [truck, setTruck] = useState(null);
 
+  const truck = useSelector(selectTruckById);
   const buildLinkClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.activeLink);
   };
 
   useEffect(() => {
-    const fetchTruck = async () => {
-      const res = await fetchTruckById(id);
-      setTruck(res);
-    };
-    fetchTruck();
-  }, [id]);
-
-  console.log(truck);
+    dispatch(fetchTruckById(id));
+  }, [dispatch, id]);
 
   return (
     <Section>
@@ -76,7 +73,10 @@ const TruckItem = () => {
               </NavLink>
             </div>
 
-            <Outlet />
+            <div className={css.truckTabsContent}>
+              <Outlet truck={truck} />
+              <p>BookingForm</p>
+            </div>
           </>
         )}
       </Container>

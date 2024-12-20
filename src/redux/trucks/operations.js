@@ -23,3 +23,16 @@ export const fetchTrucks = createAsyncThunk(
             return thunkAPI.rejectWithValue(error.message);
         }
     })
+
+
+export const fetchTruckById = createAsyncThunk(
+    'trucks/getTruckById',
+    async (id, thunkAPI) => {
+        try {
+            const { data } = await INSTANCE.get(`/${id}`);
+            return data;
+
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    })
