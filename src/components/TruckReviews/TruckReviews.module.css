@@ -1,0 +1,57 @@
+.reviewsWrapper {
+    max-width: 631px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 44px;
+}
+
+.review {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+}
+
+.header {
+    display: flex;
+    column-gap: 16px;
+    align-items: center;
+}
+
+.imgFirstLetter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 60px;
+    width: 60px;
+    height: 60px;
+    background: var(--color-gray);
+
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.33;
+    color: var(--color-crimson);
+}
+
+.author {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-charcoal);
+}
+
+.rating {
+    display: flex;
+    column-gap: 4px;
+}
+
+.starIcon {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-light-gray);
+}
+
+.comment {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-steel);
+}
