@@ -1,5 +1,7 @@
+import TruckItem from "../components/TruckItem/TruckItem.jsx";
+
 const TruckDetailsPage = () => {
-  return <div></div>;
+  return <TruckItem />;
 };
 
 export default TruckDetailsPage;

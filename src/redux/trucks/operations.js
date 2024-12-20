@@ -16,6 +16,8 @@ export const fetchTrucks = createAsyncThunk(
             const { data } = await INSTANCE.get('', {
                 params: searchParams,
             });
+
+
             return data;
         } catch (error) {
             return thunkAPI.rejectWithValue(error.message);

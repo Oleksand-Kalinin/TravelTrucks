@@ -83,7 +83,7 @@ const TrucksListItem = ({ truck }) => {
             )}
           </ul>
         </div>
-        <Link className={css.btnShowMore} to={`/catalog/${truck.id}`}>
+        <Link className={css.btnShowMore} to={`/catalog/${truck.id}/features`}>
           Show more
         </Link>
       </div>

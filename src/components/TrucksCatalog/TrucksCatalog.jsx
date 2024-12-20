@@ -22,13 +22,14 @@ const TrucksCatalog = () => {
     dispatch(fetchTrucks({ page }));
   }, [dispatch, page]);
 
+  console.log(trucks);
   return (
     <div className={css.wrapperCatalog}>
       {isLoading && <p>Loading...</p>}
-      {!isLoading && trucks.items.length === 0 && (
+      {!isLoading && trucks && trucks.items.length === 0 && (
         <p className={css.noTrucks}>No trucks found</p>
       )}
-      {!isLoading && trucks.items.length > 0 && (
+      {!isLoading && trucks && trucks.items.length > 0 && (
         <>
           <TruckList trucks={trucks} />
           <button
