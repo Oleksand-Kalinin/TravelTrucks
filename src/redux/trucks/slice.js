@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTruckById, fetchTrucks } from "./operations.js";
+import { fetchTruckById, fetchTrucks, fetchTrucksNextPage } from "./operations.js";
 
 export const INITIAL_STATE = {
     trucks: {
@@ -49,6 +49,18 @@ const trucksSlice = createSlice({
                 state.error = action.payload;
             })
 
+            .addCase(fetchTrucksNextPage.pending, (state) => {
+                state.error = null;
+                state.isLoading = true;
+            })
+            .addCase(fetchTrucksNextPage.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.trucks.items = [...state.trucks.items, ...action.payload];
+            })
+            .addCase(fetchTrucksNextPage.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+            })
 
     },
 });

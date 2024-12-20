@@ -4,7 +4,10 @@ import TruckList from "../TrucksList/TruckList.jsx";
 
 import css from "./TrucksCatalog.module.css";
 import { useEffect, useState } from "react";
-import { fetchTrucks } from "../../redux/trucks/operations.js";
+import {
+  fetchTrucks,
+  fetchTrucksNextPage,
+} from "../../redux/trucks/operations.js";
 import Loader from "../Loader/Loader.jsx";
 
 const TrucksCatalog = () => {
@@ -16,7 +19,9 @@ const TrucksCatalog = () => {
   const [page, setPage] = useState(1);
 
   const handleClickLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
+    const nextPage = page + 1;
+    setPage(nextPage);
+    dispatch(fetchTrucksNextPage({ page: nextPage }));
   };
 
   useEffect(() => {

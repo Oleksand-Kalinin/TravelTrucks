@@ -34,3 +34,16 @@ export const fetchTruckById = createAsyncThunk(
             return thunkAPI.rejectWithValue(error.message);
         }
     })
+
+export const fetchTrucksNextPage = createAsyncThunk(
+    'trucks/getTrucksNextPage',
+    async (searchParams, thunkAPI) => {
+        try {
+            const { data } = await INSTANCE.get('', {
+                params: searchParams,
+            });
+            return data.items;
+        } catch (error) {
+            return thunkAPI.rejectWithValue(error.message);
+        }
+    })
