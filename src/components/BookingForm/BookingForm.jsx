@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { Bounce, toast } from "react-toastify";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useState } from "react";
 
 const BookingValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -89,12 +88,6 @@ const BookingForm = () => {
             </label>
 
             <label className={css.fieldWrapper}>
-              {/* <Field
-                className={css.fieldInput}
-                type="text"
-                name="bookingDate"
-                placeholder="Booking date*"
-              /> */}
               <DatePicker
                 name="bookingDate"
                 className={css.fieldInput}
