@@ -49,6 +49,7 @@
 
 .textarea {
     height: 118px;
+    resize: none;
 }
 
 .errMessage {

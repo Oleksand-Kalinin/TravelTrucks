@@ -101,7 +101,7 @@ const BookingForm = () => {
             <label className={css.fieldWrapper}>
               <Field
                 className={clsx(css.fieldInput, css.textarea)}
-                type="textarea"
+                as="textarea"
                 name="comment"
                 placeholder="Comment"
               />
