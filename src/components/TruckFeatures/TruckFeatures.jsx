@@ -27,11 +27,43 @@ const TruckFeatures = () => {
           <TruckFeaturesItem icon={`${sprite}#cup-hot-icon`} text="Kitchen" />
         )}
 
+        {truck.radio && (
+          <TruckFeaturesItem icon={`${sprite}#ui-radios-icon`} text="Radio" />
+        )}
+
         {truck.AC && (
           <TruckFeaturesItem icon={`${sprite}#wind-icon`} text="AC" />
         )}
 
+        {truck.refrigerator && (
+          <TruckFeaturesItem
+            icon={`${sprite}#solar_fridge-outline-icon`}
+            text="Refrigerator"
+          />
+        )}
+
         {truck.TV && <TruckFeaturesItem icon={`${sprite}#tv-icon`} text="TV" />}
+
+        {truck.microwave && (
+          <TruckFeaturesItem
+            icon={`${sprite}#lucide_microwave-icon`}
+            text="Microwave"
+          />
+        )}
+
+        {truck.gas && (
+          <TruckFeaturesItem
+            icon={`${sprite}#hugeicons_gas-stove-icon`}
+            text="Gas"
+          />
+        )}
+
+        {truck.water && (
+          <TruckFeaturesItem
+            icon={`${sprite}#ion_water-outline-icon`}
+            text="Water"
+          />
+        )}
 
         {truck.bathroom && (
           <TruckFeaturesItem
