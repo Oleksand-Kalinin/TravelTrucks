@@ -1,5 +1,5 @@
 .reviewsWrapper {
-    max-width: 631px;
+    flex-basis: 631px;
     display: flex;
     flex-direction: column;
     row-gap: 44px;
