@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import Section from "../Section/Section.jsx";
 import Container from "../Container/Container.jsx";
@@ -11,12 +11,26 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectTruckById } from "../../redux/trucks/selectors.js";
 import { fetchTruckById } from "../../redux/trucks/operations.js";
 import BookingForm from "../BookingForm/BookingForm.jsx";
+import Modal from "../Modal/Modal.jsx";
+import ImageCard from "../ImageCard/ImageCard.jsx";
 
 const TruckItem = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [img, setImg] = useState(null);
   const dispatch = useDispatch();
   const { id } = useParams("id");
 
   const truck = useSelector(selectTruckById);
+
+  const openModal = (img) => {
+    setImg(img);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setImg(null);
+  };
   const buildLinkClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.activeLink);
   };
@@ -59,6 +73,9 @@ const TruckItem = () => {
                   key={index}
                   src={item.thumb}
                   alt={truck.name}
+                  onClick={() => {
+                    openModal(item);
+                  }}
                 />
               ))}
             </div>
@@ -80,6 +97,10 @@ const TruckItem = () => {
             </div>
           </>
         )}
+
+        <Modal showModal={showModal} closeModal={closeModal}>
+          <ImageCard img={img} />
+        </Modal>
       </Container>
     </Section>
   );
