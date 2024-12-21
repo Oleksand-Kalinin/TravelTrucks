@@ -57,6 +57,13 @@
     object-fit: cover;
     background-color: var(--color-silver);
     border: 1px solid var(--color-silver);
+
+    transition: transform 250ms linear;
+}
+
+.image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
 }
 
 .truckDescription {
