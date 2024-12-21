@@ -49,7 +49,7 @@
 }
 
 .favorite {
-    fill: #e44848;
+    fill: var(--color-crimson);
 }
 
 .truckRatingLocation {

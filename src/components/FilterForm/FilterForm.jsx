@@ -3,6 +3,7 @@ import InputFilterForm from "../InputFilterForm/InputFilterForm.jsx";
 import sprite from "../../images/sprite.svg";
 import css from "./FilterForm.module.css";
 import clsx from "clsx";
+import { useSearchParams } from "react-router-dom";
 
 const FilterForm = () => {
   const id = {
@@ -15,9 +16,33 @@ const FilterForm = () => {
     fullyIntegrated: useId(),
     alcove: useId(),
   };
+
+  const [, setSearchParams] = useSearchParams();
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Form submitted");
+    const formFilters = event.target;
+
+    const location = formFilters.elements.location.value.trim();
+    const form = formFilters.elements.vehicleType.value;
+    const vehicleEquipment = Array.from(
+      formFilters.elements.vehicleEquipment
+    ).reduce((acc, checkbox) => {
+      if (checkbox.checked) {
+        if (checkbox.value === "automatic") {
+          acc.transmission = "automatic";
+        } else {
+          acc[checkbox.value] = true;
+        }
+      }
+      return acc;
+    }, {});
+
+    const newSearchParams = {
+      ...(location && { location }),
+      ...(form && { form }),
+      ...vehicleEquipment,
+    };
+    setSearchParams(newSearchParams);
   };
 
   return (
@@ -47,7 +72,7 @@ const FilterForm = () => {
             id={id.ac}
             type="checkbox"
             name="vehicleEquipment"
-            value="ac"
+            value="AC"
             icon={`${sprite}#wind-icon`}
             text="AC"
             className={css.labelCheckbox}
@@ -65,7 +90,7 @@ const FilterForm = () => {
             id={id.kitchen}
             type="checkbox"
             name="vehicleEquipment"
-            value="Kitchen"
+            value="kitchen"
             icon={`${sprite}#cup-hot-icon`}
             text="Kitchen"
             className={css.labelCheckbox}
@@ -74,7 +99,7 @@ const FilterForm = () => {
             id={id.tv}
             type="checkbox"
             name="vehicleEquipment"
-            value="tv"
+            value="TV"
             icon={`${sprite}#tv-icon`}
             text="TV"
             className={css.labelCheckbox}
