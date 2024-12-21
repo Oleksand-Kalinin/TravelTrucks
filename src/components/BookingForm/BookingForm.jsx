@@ -3,6 +3,9 @@ import * as Yup from "yup";
 import css from "./BookingForm.module.css";
 import clsx from "clsx";
 import { Bounce, toast } from "react-toastify";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useState } from "react";
 
 const BookingValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -13,7 +16,7 @@ const BookingValidationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Incorrect email address")
     .required("Email is required"),
-  bookingDate: Yup.string().required("Date is required"),
+  bookingDate: Yup.date().required("Date is required"),
   comment: Yup.string().min(
     8,
     "The comment must be at least 8 characters long"
@@ -24,7 +27,7 @@ const BookingForm = () => {
   const INITIAL_VALUES = {
     name: "",
     email: "",
-    bookingDate: "",
+    bookingDate: null,
     comment: "",
   };
 
@@ -40,6 +43,7 @@ const BookingForm = () => {
       theme: "light",
       transition: Bounce,
     });
+    INITIAL_VALUES.bookingDate = null;
     actions.resetForm();
   };
 
@@ -49,7 +53,7 @@ const BookingForm = () => {
       onSubmit={handleSubmit}
       validationSchema={BookingValidationSchema}
     >
-      {({ errors }) => (
+      {({ errors, setFieldValue }) => (
         <Form className={css.form}>
           <p className={css.formTitle}>Book your campervan now</p>
           <p className={css.formText}>
@@ -85,11 +89,22 @@ const BookingForm = () => {
             </label>
 
             <label className={css.fieldWrapper}>
-              <Field
+              {/* <Field
                 className={css.fieldInput}
                 type="text"
                 name="bookingDate"
                 placeholder="Booking date*"
+              /> */}
+              <DatePicker
+                name="bookingDate"
+                className={css.fieldInput}
+                placeholderText="Booking date*"
+                dateFormat="dd.MM.yyyy"
+                selected={INITIAL_VALUES.bookingDate}
+                onChange={(date) => {
+                  INITIAL_VALUES.bookingDate = date;
+                  setFieldValue("bookingDate", date);
+                }}
               />
               <ErrorMessage
                 className={css.errMessage}
