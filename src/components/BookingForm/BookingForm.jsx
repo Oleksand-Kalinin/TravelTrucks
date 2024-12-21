@@ -105,6 +105,7 @@ const BookingForm = () => {
                   INITIAL_VALUES.bookingDate = date;
                   setFieldValue("bookingDate", date);
                 }}
+                autoComplete="off"
               />
               <ErrorMessage
                 className={css.errMessage}
