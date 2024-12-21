@@ -7,16 +7,16 @@ import { Bounce, toast } from "react-toastify";
 const BookingValidationSchema = Yup.object().shape({
   name: Yup.string()
     .required("Name is required")
-    .min(2, "The password must be at least 2 characters long")
-    .max(100, "The password must be shorter than 100 characters"),
+    .min(2, "The name must be at least 2 characters long")
+    .max(100, "The name must be shorter than 100 characters"),
 
   email: Yup.string()
     .email("Incorrect email address")
     .required("Email is required"),
   bookingDate: Yup.string().required("Date is required"),
   comment: Yup.string().min(
-    2,
-    "The comment must be at least 2 characters long"
+    8,
+    "The comment must be at least 8 characters long"
   ),
 });
 
