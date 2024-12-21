@@ -123,7 +123,7 @@ const FilterForm = () => {
             id={id.van}
             type="radio"
             name="vehicleType"
-            value="van"
+            value="panelTruck"
             icon={`${sprite}#bi_grid-1x2-icon`}
             text="Van"
             className={css.labelRadio}
