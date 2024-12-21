@@ -44,13 +44,16 @@ const TrucksCatalog = () => {
       {!isLoading && trucks && trucks.items.length > 0 && (
         <>
           <TruckList trucks={trucks} />
-          <button
-            className={css.btnLoadMore}
-            type="button"
-            onClick={handleClickLoadMore}
-          >
-            Load more
-          </button>
+
+          {page < trucks.totalPages && (
+            <button
+              className={css.btnLoadMore}
+              type="button"
+              onClick={handleClickLoadMore}
+            >
+              Load more
+            </button>
+          )}
         </>
       )}
     </div>
