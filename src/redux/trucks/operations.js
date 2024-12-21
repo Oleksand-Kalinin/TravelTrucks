@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { calculateTotalPages } from "../../js/calculateTotalPages.js";
+import { Bounce, toast } from "react-toastify";
 
 const ITEMS_PER_PAGE = 4;
 export const INSTANCE = axios.create({
@@ -21,6 +22,20 @@ export const fetchTrucks = createAsyncThunk(
             const paginationInfo = calculateTotalPages(data.total, ITEMS_PER_PAGE);
             return { ...paginationInfo, ...data };
         } catch (error) {
+            if (error.response.status === 404) {
+                toast.error(`No trucks were found for these parameters.`, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+
+            }
             return thunkAPI.rejectWithValue(error.message);
         }
     })
