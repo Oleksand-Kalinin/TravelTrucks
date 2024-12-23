@@ -9,6 +9,7 @@ import {
   removeFavoriteTruck,
 } from "../../redux/trucks/slice.js";
 import clsx from "clsx";
+import { formatPrice } from "../../js/formatPrice.js";
 
 const TrucksListItem = ({ truck }) => {
   const dispatch = useDispatch();
@@ -38,7 +39,9 @@ const TrucksListItem = ({ truck }) => {
             <h3 className={css.truckTitle}>{truck.name}</h3>
 
             <div className={css.truckPriceWrapper}>
-              <p className={css.truckPrice}>&#8364;{truck.price}.00</p>
+              <p className={css.truckPrice}>
+                &#8364;{formatPrice(truck.price)}
+              </p>
               <svg
                 onClick={handleClickFavorite}
                 className={clsx(css.heartIcon, {
