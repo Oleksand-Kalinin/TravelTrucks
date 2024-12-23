@@ -13,6 +13,7 @@ import { fetchTruckById } from "../../redux/trucks/operations.js";
 import BookingForm from "../BookingForm/BookingForm.jsx";
 import Modal from "../Modal/Modal.jsx";
 import ImageCard from "../ImageCard/ImageCard.jsx";
+import { formatPrice } from "../../js/formatPrice.js";
 
 const TruckItem = () => {
   const [showModal, setShowModal] = useState(false);
@@ -64,7 +65,7 @@ const TruckItem = () => {
               </div>
             </div>
 
-            <p className={css.truckPrice}>&#8364;{truck.price}.00</p>
+            <p className={css.truckPrice}>&#8364;{formatPrice(truck.price)}</p>
 
             <div className={css.truckGallery}>
               {truck.gallery.map((item, index) => (
