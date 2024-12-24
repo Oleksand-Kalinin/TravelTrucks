@@ -47,7 +47,7 @@ const TrucksCatalog = () => {
       setTotalPages(data.totalPages);
     };
     fetchGetTrucks();
-  }, [dispatch, page]);
+  }, [dispatch, filterSearchParams, page]);
 
   return (
     <div className={css.wrapperCatalog}>
