@@ -4,7 +4,7 @@ import css from "./TruckList.module.css";
 const TruckList = ({ trucks }) => {
   return (
     <ul className={css.trucksList}>
-      {trucks?.items?.map((truck) => (
+      {trucks.map((truck) => (
         <TrucksListItem key={truck.id} truck={truck} />
       ))}
     </ul>

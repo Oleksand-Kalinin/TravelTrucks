@@ -1,51 +1,62 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoading, selectTrucks } from "../../redux/trucks/selectors.js";
-import TruckList from "../TrucksList/TruckList.jsx";
-
-import css from "./TrucksCatalog.module.css";
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { selectIsLoading } from "../../redux/trucks/selectors.js";
+
+import TruckList from "../TrucksList/TruckList.jsx";
+import Loader from "../Loader/Loader.jsx";
+
 import {
   fetchTrucks,
-  fetchTrucksNextPage,
+  //   fetchTrucksNextPage,
 } from "../../redux/trucks/operations.js";
-import Loader from "../Loader/Loader.jsx";
-import { useSearchParams } from "react-router-dom";
+
+import css from "./TrucksCatalog.module.css";
 
 const TrucksCatalog = () => {
   const dispatch = useDispatch();
+
   const [page, setPage] = useState(1);
 
   const [searchParams] = useSearchParams();
 
-  const allSearchParams = useMemo(() => {
-    setPage(1);
-    return Object.fromEntries([...searchParams]);
-  }, [searchParams]);
-
-  const trucks = useSelector(selectTrucks);
+  //   const trucks = useSelector(selectTrucks);
+  const [trucks, setTrucks] = useState([]);
+  const [totalPages, setTotalPages] = useState(null);
   const isLoading = useSelector(selectIsLoading);
 
   const handleClickLoadMore = () => {
-    const nextPage = page + 1;
-    setPage(nextPage);
-    dispatch(fetchTrucksNextPage({ page: nextPage, ...allSearchParams }));
+    // const nextPage = page + 1;
+    setPage((prevPage) => prevPage + 1);
+    // dispatch(fetchTrucksNextPage({ page: nextPage, ...allSearchParams }));
   };
 
+  const filterSearchParams = useMemo(() => {
+    setPage(1);
+    setTrucks([]);
+    setTotalPages(null);
+    return Object.fromEntries([...searchParams]);
+  }, [searchParams]);
+
   useEffect(() => {
-    dispatch(fetchTrucks(allSearchParams));
-  }, [allSearchParams, dispatch]);
+    const fetchGetTrucks = async () => {
+      const data = await dispatch(
+        fetchTrucks({ ...filterSearchParams, page })
+      ).unwrap();
+      setTrucks((prevItems) => [...prevItems, ...data.items]);
+      setTotalPages(data.totalPages);
+    };
+    fetchGetTrucks();
+  }, [dispatch, filterSearchParams, page]);
 
   return (
     <div className={css.wrapperCatalog}>
-      {isLoading && <Loader />}
-      {!isLoading && trucks && trucks.items.length === 0 && (
-        <p className={css.noTrucks}>No trucks found</p>
-      )}
-      {!isLoading && trucks && trucks.items.length > 0 && (
+      {trucks && trucks.length > 0 && (
         <>
           <TruckList trucks={trucks} />
+          {isLoading && <Loader />}
 
-          {page < trucks.totalPages && (
+          {page < totalPages && (
             <button
               className={css.btnLoadMore}
               type="button"
@@ -55,6 +66,9 @@ const TrucksCatalog = () => {
             </button>
           )}
         </>
+      )}
+      {!isLoading && trucks && trucks.length === 0 && (
+        <p className={css.noTrucks}>No trucks found</p>
       )}
     </div>
   );
