@@ -47,16 +47,17 @@ const TrucksCatalog = () => {
       setTotalPages(data.totalPages);
     };
     fetchGetTrucks();
-  }, [dispatch, filterSearchParams, page]);
+  }, [dispatch, page]);
 
   return (
     <div className={css.wrapperCatalog}>
+      {isLoading && trucks.length === 0 && <Loader />}
       {trucks && trucks.length > 0 && (
         <>
           <TruckList trucks={trucks} />
           {isLoading && <Loader />}
 
-          {page < totalPages && (
+          {page < totalPages && !isLoading && (
             <button
               className={css.btnLoadMore}
               type="button"
